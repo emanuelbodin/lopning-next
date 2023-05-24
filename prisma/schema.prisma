@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model competitions {
+  id   String   @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int?     @map("__v")
+  date DateTime @db.Date
+  type String
+}
+
+model competitors {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  v    Int?   @map("__v")
+  name String @unique(map: "name_1")
+}
+
+model results {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int?   @map("__v")
+  competition String @db.ObjectId
+  competitor  String @db.ObjectId
+  points      Int
+  timeMin     Int
+  timeSec     Int
+}
+
+model users {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  v             Int      @map("__v")
+  email         String   @unique(map: "email_1")
+  password      String
+  refreshTokens String[]
+}
