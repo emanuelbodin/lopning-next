@@ -1,10 +1,9 @@
-import TableHeading from "@/components/TableHeading";
-import ScoreBoardTableRow from "./ScoreBoardTableRow";
-import { ScoreBoardResult } from "common/interfaces/running.interface";
-
+import TableHeading from '@/components/TableHeading'
+import ScoreBoardTableRow from './ScoreboardRow'
+import { scoreboardRow } from '@/types/results'
 interface TableProps {
-  headings: string[];
-  data: ScoreBoardResult[];
+  headings: string[]
+  data: scoreboardRow[]
 }
 
 const ScoreBoardTable = ({ headings, data }: TableProps) => {
@@ -18,15 +17,11 @@ const ScoreBoardTable = ({ headings, data }: TableProps) => {
           </tr>
         )}
         {data.map((item, index) => (
-          <ScoreBoardTableRow
-            key={item.competitorName + index}
-            placement={index + 1}
-            data={item}
-          />
+          <ScoreBoardTableRow key={item.competitorName + index} placement={index + 1} data={item} />
         ))}
       </tbody>
     </table>
-  );
-};
+  )
+}
 
-export default ScoreBoardTable;
+export default ScoreBoardTable
