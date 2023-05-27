@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface LogoProps {
   onClick: () => void
 }
@@ -10,7 +12,7 @@ const Logo = ({ onClick }: LogoProps) => {
         href="/">
         Run
       </a>
-      <img className="h-10" src="/running.svg" alt="running-logo" />
+      <Image className="h-10" src="/running.svg" alt="running-logo" />
     </div>
   )
 }
