@@ -8,7 +8,7 @@ const yearOptions = [
   { id: 'year4', value: '2019', label: '2019' },
   { id: 'year5', value: '2018', label: '2018' },
 ]
-import { getScoreboard } from '@/server/services/result-service'
+import { getScoreboard } from '@/app/results/result-utils'
 
 export const revalidate = 3600
 

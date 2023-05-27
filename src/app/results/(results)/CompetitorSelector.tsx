@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import type { competitors } from '@prisma/client'
 import SelectInput, { SelectOptions } from '@/components/SelectInput'
 
 export default function CompetitorSelector() {
@@ -8,7 +9,7 @@ export default function CompetitorSelector() {
   useEffect(() => {
     const fetchCompetitors = async () => {
       const res = await fetch('/api/competitor')
-      const competitors = await res.json()
+      const competitors = (await res.json()) as { data: competitors[] }
       const options = competitors.data.map((competitor) => ({
         id: competitor.id,
         value: competitor.id,

@@ -1,14 +1,24 @@
-import { prisma } from '../db'
-import { competitionDb } from '../db/competitionDb'
-import { resultDb } from '../db/resultDb'
-import { competitorDb } from '../db/competitorDb'
+import { prisma } from '../../server/db'
 import { ScoreboardRow, CompetitorResult, CompetitionResult } from '@/types/results'
 
 export const getScoreboard = async (year: number) => {
-  const competitions = await competitionDb.getCompetitionsByYearAndType('söndagstävling', year)
+  const competitions = await prisma.competitions.findMany({
+    where: {
+      date: {
+        gte: new Date(year, 0, 1),
+        lt: new Date(year + 1, 0, 1),
+      },
+      type: 'söndagstävling',
+    },
+  })
   const competitionIds = competitions.map((competition) => competition.id)
-  const results = await resultDb.getResultsByComptitionIds(competitionIds)
-
+  const results = await prisma.results.findMany({
+    where: {
+      competition: {
+        in: competitionIds,
+      },
+    },
+  })
   const scoreboard: ScoreboardRow[] = []
   const competitorIds: string[] = []
   results.forEach((result) => {
@@ -32,7 +42,7 @@ export const getScoreboard = async (year: number) => {
   })
   scoreboard.sort((a, b) => b.points - a.points)
 
-  const competitors = await competitorDb.getByIds(competitorIds)
+  const competitors = await prisma.competitors.findMany({ where: { id: { in: competitorIds } } })
   scoreboard.forEach((scoreboardResult) => {
     const competitor = competitors.find(
       (competitor) => competitor.id === scoreboardResult.competitorId

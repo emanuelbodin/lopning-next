@@ -20,7 +20,7 @@ const Navbar = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
 
   const navItems = navLinks.map((link) => {
-    const isActive = pathname.startsWith(link.href)
+    const isActive = link.href === '/' ? link.href === pathname : pathname.startsWith(link.href)
     return <NavbarItem key={link.title} href={link.href} title={link.title} isActive={isActive} />
   })
 

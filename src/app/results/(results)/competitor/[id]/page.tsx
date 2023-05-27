@@ -1,6 +1,6 @@
 import ResultsCard from '@/app/results/components/ResultsCard'
 import { prisma } from '@/server/db'
-import { getResultsByCompetitor } from '@/server/services/result-service'
+import { getResultsByCompetitor } from '@/app/results/result-utils'
 const headings = ['#', 'Type', 'Date', 'Time', 'Points']
 
 export async function generateStaticParams() {

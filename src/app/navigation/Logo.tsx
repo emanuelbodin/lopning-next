@@ -12,7 +12,7 @@ const Logo = ({ onClick }: LogoProps) => {
         href="/">
         Run
       </a>
-      <Image className="h-10" src="/running.svg" alt="running-logo" />
+      <Image width={40} height={40} src="/running.svg" alt="running-logo" />
     </div>
   )
 }
