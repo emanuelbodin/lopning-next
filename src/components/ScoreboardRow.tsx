@@ -1,8 +1,8 @@
 import classnames from 'classnames'
-import { scoreboardRow } from '@/types/results'
+import { ScoreboardRow as TScoreboardRow } from '@/types/results'
 
 interface ScoreBoardRowProps {
-  data: scoreboardRow
+  data: TScoreboardRow
   placement: number
 }
 

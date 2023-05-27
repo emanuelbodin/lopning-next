@@ -1,20 +1,13 @@
 'use client'
-
-export type SelectOptions = {
-  id: string
-  value: string | undefined
-  label: string
-  disabled?: boolean
-}[]
 interface SelectInputProps {
   label: string
-  options: SelectOptions
+  options: { id: string; value?: string; label: string; disabled?: boolean }[]
   selectedValue?: string
   onChange: (value: string) => void
 }
 const SelectInput = ({ label, options, selectedValue, onChange }: SelectInputProps) => {
   return (
-    <div className="mb-4 w-56">
+    <div className="mb-4">
       <label htmlFor={label} className="block mb-2 text-xs sm:text-sm">
         {label}
       </label>

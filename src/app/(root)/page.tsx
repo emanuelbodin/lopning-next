@@ -10,17 +10,15 @@ const yearOptions = [
 ]
 import { getScoreboard } from '@/server/services/result-service'
 
+export const revalidate = 3600
+
 export default async function Home() {
   const data = await getScoreboard(2022)
-  console.log(data)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex flex-col mt-20 items-center">
-        <div className="w-1/2 md:w-1/4">
-          <ScoreBoard data={data} title="hej" />
-        </div>
-        hej
+        <ScoreBoard data={data} title="Poängligan 2022" />
       </div>
-    </main>
+    </div>
   )
 }
