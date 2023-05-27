@@ -8,13 +8,17 @@ const yearOptions = [
   { id: 'year4', value: '2019', label: '2019' },
   { id: 'year5', value: '2018', label: '2018' },
 ]
+import { getScoreboard } from '@/server/services/result-service'
 
-export default function Home() {
+export const revalidate = 3600
+
+export default async function Home() {
+  const data = await getScoreboard(2022)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex flex-col mt-20 items-center">
-        <div className="w-1/2 md:w-1/4">{/* <SelectInput /> */}</div>
+        <ScoreBoard data={data} title="Poängligan 2022" />
       </div>
-    </main>
+    </div>
   )
 }
