@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import './globals.css'
+import Providers from '@/Providers'
 import { Roboto } from 'next/font/google'
 import Navbar from './navigation/Navbar'
 const roboto = Roboto({
@@ -17,10 +18,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <div className="bg-stone-900 text-white w-screen min-h-screen flex flex-col">
-          <Navbar />
-          <main className="w-full mb-10">{children}</main>
-        </div>
+        <Providers>
+          <div className="bg-stone-900 text-white w-screen min-h-screen flex flex-col">
+            <Navbar />
+            <main className="w-full mb-10">{children}</main>
+          </div>
+        </Providers>
       </body>
     </html>
   )

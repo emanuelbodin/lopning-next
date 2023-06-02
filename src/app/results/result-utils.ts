@@ -1,4 +1,4 @@
-import { prisma } from '../../server/db'
+import { prisma } from '@/server/db'
 import { ScoreboardRow, CompetitorResult, CompetitionResult } from '@/types/results'
 
 export const getScoreboard = async (year: number) => {
