@@ -7,7 +7,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: todo
+      MONGO_INITDB_DATABASE: run
       MONGO_REPLICA_HOST: localhost
       MONGO_REPLICA_PORT: '27017'
     ports:
