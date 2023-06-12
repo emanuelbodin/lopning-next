@@ -1,6 +1,5 @@
 import SelectInput from '@/components/SelectInput'
 import ScoreBoard from '@/components/Scoreboard'
-import LoginButton from './LoginButton'
 const yearOptions = [
   { id: 'noYear', value: '', label: 'Select a year' },
   { id: 'year1', value: '2022', label: '2022' },
@@ -14,11 +13,10 @@ import { getScoreboard } from '@/app/results/result-utils'
 export const revalidate = 3600
 
 export default async function Home() {
-  const data = await getScoreboard(2022)
+  const data = await getScoreboard(2023)
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex flex-col mt-20 items-center">
-        <LoginButton />
         <ScoreBoard data={data} title="Poängligan 2022" />
       </div>
     </div>

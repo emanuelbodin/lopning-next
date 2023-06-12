@@ -2,19 +2,20 @@ import { prisma } from '@/server/db'
 import { ScoreboardRow, CompetitorResult, CompetitionResult } from '@/types/results'
 
 export const getScoreboard = async (year: number) => {
-  const competitions = await prisma.competitions.findMany({
+  const competitions = await prisma.competition.findMany({
     where: {
       date: {
         gte: new Date(year, 0, 1),
         lt: new Date(year + 1, 0, 1),
       },
-      type: 'söndagstävling',
+      category: { name: 'Söndagstävling' },
     },
   })
+  console.log(123, competitions)
   const competitionIds = competitions.map((competition) => competition.id)
-  const results = await prisma.results.findMany({
+  const results = await prisma.result.findMany({
     where: {
-      competition: {
+      competitionId: {
         in: competitionIds,
       },
     },
@@ -22,7 +23,7 @@ export const getScoreboard = async (year: number) => {
   const scoreboard: ScoreboardRow[] = []
   const competitorIds: string[] = []
   results.forEach((result) => {
-    const competitorId = result.competitor
+    const competitorId = result.competitorId
     if (!competitorIds.includes(competitorId)) competitorIds.push(competitorId)
     const points = result.points
     const existingScore = scoreboard.find(
@@ -42,7 +43,7 @@ export const getScoreboard = async (year: number) => {
   })
   scoreboard.sort((a, b) => b.points - a.points)
 
-  const competitors = await prisma.competitors.findMany({ where: { id: { in: competitorIds } } })
+  const competitors = await prisma.competitor.findMany({ where: { id: { in: competitorIds } } })
   scoreboard.forEach((scoreboardResult) => {
     const competitor = competitors.find(
       (competitor) => competitor.id === scoreboardResult.competitorId
@@ -55,25 +56,26 @@ export const getScoreboard = async (year: number) => {
 
 export const getResultsByCompetitor = async (competitorId?: string) => {
   if (!competitorId) throw new Error('no id')
-  const results = await prisma.results.findMany({ where: { competitor: competitorId } })
+  const results = await prisma.result.findMany({ where: { competitorId } })
   results.sort((a, b) => a.timeMin * 60 + a.timeSec - (b.timeMin * 60 + b.timeSec))
-  const competitionIds = results.map((result) => result.competition)
-  const competitions = await prisma.competitions.findMany({ where: { id: { in: competitionIds } } })
+  const competitionIds = results.map((result) => result.competitionId)
+  const competitions = await prisma.competition.findMany({
+    where: { id: { in: competitionIds } },
+    include: { category: true },
+  })
   const formattedResults: CompetitorResult[] = []
   results.forEach((result) => {
-    const competition = competitions.find(
-      (competition) => competition.id.toString() === result.competition.toString()
-    )
-    const competitionDate = competition!.date.toISOString().split('T')[0]
-    const { id, timeMin, timeSec, points, competition: competitionId } = result
+    const competition = competitions.find((competition) => competition.id === result.competitionId)
+    if (!competition) return
+    const { id, timeMin, timeSec, points } = result
     formattedResults.push({
       id,
       timeMin,
       timeSec,
       points,
-      competitionId: competitionId.toString(),
-      competitionType: competition?.type ?? 'no type',
-      competitionDate,
+      competitionId: competition.id,
+      competitionType: competition.category.name,
+      competitionDate: competition.date.toDateString(),
     })
   })
   return formattedResults
@@ -81,25 +83,23 @@ export const getResultsByCompetitor = async (competitorId?: string) => {
 
 export const getResultsByCompetition = async (competitionId: string | undefined) => {
   if (!competitionId) throw new Error('no competiton id')
-  const results = await prisma.results.findMany({ where: { competition: competitionId } })
+  const results = await prisma.result.findMany({ where: { competitionId } })
   results.sort((a, b) => a.timeMin * 60 + a.timeSec - (b.timeMin * 60 + b.timeSec))
-  const competitorIds = results.map((result) => result.competitor)
-  const competitors = await prisma.competitors.findMany({ where: { id: { in: competitorIds } } })
+  const competitorIds = results.map((result) => result.competitorId)
+  const competitors = await prisma.competitor.findMany({ where: { id: { in: competitorIds } } })
   const formattedResults: CompetitionResult[] = []
   results.forEach((result) => {
-    const competitor = competitors.find(
-      (competitor) => competitor.id.toString() === result.competitor.toString()
-    )
+    const competitor = competitors.find((competitor) => competitor.id === result.competitorId)
     const competitorName = competitor ? competitor.name : undefined
-    const { id, timeMin, timeSec, points, competition } = result
+    const { id, timeMin, timeSec, points, competitionId } = result
     formattedResults.push({
       id,
       timeMin,
       timeSec,
       points,
       competitorName,
-      competitor: competitor ? competitor.toString() : '',
-      competition: competition.toString(),
+      competitor: competitor?.id ?? '',
+      competition: competitionId,
     })
   })
   return formattedResults

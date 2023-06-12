@@ -1,20 +1,15 @@
 'use client'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import ButtonOutline from '@/components/ui/ButtonOutline'
 
 export default function LoginButton() {
   const { data: session } = useSession()
   if (session) {
     return (
-      <>
-        Signed in as {session?.user?.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
+      <ButtonOutline type="danger" onClick={() => signOut()}>
+        Sign out
+      </ButtonOutline>
     )
   }
-  return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  )
+  return <ButtonOutline onClick={() => signIn()}>Sign in</ButtonOutline>
 }

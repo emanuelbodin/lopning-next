@@ -1,20 +1,16 @@
 version: '3.8'
-
 services:
-  mongo:
-    build: ./mongodb-rs
+  postgres:
+    image: postgres:latest
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: run
-      MONGO_REPLICA_HOST: localhost
-      MONGO_REPLICA_PORT: '27017'
+    container_name: my-db
     ports:
-      - 27017:27017
+      - '5555:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     volumes:
-      - mongodb:/data/db
-      - mongodb_config:/data/configdb
+      - my-db:/var/lib/postgresql/data
 volumes:
-  mongodb:
-  mongodb_config:
+  my-db:

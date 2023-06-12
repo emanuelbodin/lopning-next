@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import Logo from './Logo'
 import NavbarItem from './NavbarItem'
 import MobileMenuButton from './MobileMenuButton'
+import LoginButton from '@/app/LoginButton'
 
 const navLinks = [
   { href: '/', title: 'Home' },
@@ -37,6 +38,7 @@ const Navbar = () => {
             <MobileMenuButton onClick={() => setIsMobileNavOpen((old) => !old)} />
           </div>
         </div>
+        <LoginButton />
       </div>
       <ul
         className={classNames('lg:hidden flex-col justify-center items-center gap-20', {
