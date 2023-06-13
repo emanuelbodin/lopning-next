@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import SelectInput, { SelectOptions } from '@/components/SelectInput'
-import type { competitions } from '@prisma/client'
+import type { Competition } from '@prisma/client'
 
 export default function CompetitonSelector() {
   const competitionTypeOptions = [
@@ -16,7 +16,7 @@ export default function CompetitonSelector() {
   const onCompetitionTypeChange = async (type: string | undefined) => {
     if (!type) return
     const res = await fetch(`/api/competition/${type}`)
-    const competitions = (await res.json()) as { data: competitions[] }
+    const competitions = (await res.json()) as { data: Competition[] }
     const options = competitions.data.map((competition) => ({
       id: competition.id,
       value: competition.id,
