@@ -11,7 +11,6 @@ export const getScoreboard = async (year: number) => {
       category: { name: 'Söndagstävling' },
     },
   })
-  console.log(123, competitions)
   const competitionIds = competitions.map((competition) => competition.id)
   const results = await prisma.result.findMany({
     where: {

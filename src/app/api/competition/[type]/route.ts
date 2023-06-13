@@ -10,6 +10,6 @@ export async function GET(
   }
 ) {
   const type = params.type
-  const competitions = await prisma.competitions.findMany({ where: { type } })
+  const competitions = await prisma.competition.findMany({ where: { category: { name: type } } })
   return NextResponse.json({ data: competitions })
 }
