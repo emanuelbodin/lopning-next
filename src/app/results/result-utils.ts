@@ -103,3 +103,13 @@ export const getResultsByCompetition = async (competitionId: string | undefined)
   })
   return formattedResults
 }
+
+export const getCompetitionCategories = async () => {
+  const categories = await prisma.competitionCategory.findMany()
+  return categories
+}
+
+export const getCompetitors = async () => {
+  const competitors = await prisma.competitor.findMany()
+  return competitors
+}

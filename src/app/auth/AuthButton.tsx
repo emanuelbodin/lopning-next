@@ -2,7 +2,7 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
 import ButtonOutline from '@/components/ui/ButtonOutline'
 
-export default function LoginButton() {
+export default function AuthButton() {
   const { data: session } = useSession()
   if (session) {
     return (

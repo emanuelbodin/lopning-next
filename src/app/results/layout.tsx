@@ -1,11 +1,3 @@
-import ResultTabNavigator from './components/ResultTabNavigator'
-const ResultsLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="flex flex-col items-center pt-20 w-10/12 mx-auto">
-      <ResultTabNavigator />
-      {children}
-    </div>
-  )
+export default function ResultsPageLayout({ children }: { children: React.ReactNode }) {
+  return <div className="flex w-full justify-center p-5 h-full">{children}</div>
 }
-
-export default ResultsLayout
