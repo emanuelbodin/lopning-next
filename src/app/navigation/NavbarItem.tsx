@@ -1,13 +1,17 @@
+'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import classNames from 'classnames'
 
 interface NavbarItemProps {
   href: string
   title: string
-  isActive: boolean
 }
 
-const NavbarItem = ({ href, title, isActive }: NavbarItemProps) => {
+const NavbarItem = ({ href, title }: NavbarItemProps) => {
+  const pathname = usePathname()
+  const isActive = href === '/' ? href === pathname : pathname.startsWith(href)
+
   return (
     <li className="text-center">
       <Link

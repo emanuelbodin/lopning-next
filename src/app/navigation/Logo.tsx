@@ -1,12 +1,8 @@
 import Image from 'next/image'
 
-interface LogoProps {
-  onClick: () => void
-}
-
-const Logo = ({ onClick }: LogoProps) => {
+export default function Logo() {
   return (
-    <div onClick={() => onClick()} className="flex gap-1 cursor-pointer">
+    <div className="flex gap-1 cursor-pointer">
       <a
         className="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"
         href="/">
@@ -16,4 +12,3 @@ const Logo = ({ onClick }: LogoProps) => {
     </div>
   )
 }
-export default Logo

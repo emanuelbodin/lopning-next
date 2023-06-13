@@ -13,7 +13,7 @@ import { getScoreboard } from '@/app/results/result-utils'
 export const revalidate = 3600
 
 export default async function Home() {
-  const data = await getScoreboard(2022)
+  const data = await getScoreboard(2023)
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex flex-col mt-20 items-center">

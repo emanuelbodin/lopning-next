@@ -4,7 +4,7 @@ import { getResultsByCompetitor } from '@/app/results/result-utils'
 const headings = ['#', 'Type', 'Date', 'Time', 'Points']
 
 export async function generateStaticParams() {
-  const competitors = await prisma.competitors.findMany()
+  const competitors = await prisma.competitor.findMany()
   return competitors.map((competitor) => ({
     slug: competitor.id,
   }))
