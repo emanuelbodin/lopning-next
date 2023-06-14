@@ -19,7 +19,7 @@ export default function CompetitonSelector({ categories }: CompetitonSelectorPro
     value: category.id,
     label: category.name,
   }))
-  categoryOptions.unshift({ id: 'noCompetition', value: '', label: 'Select a type' })
+  categoryOptions.unshift(...defaultCompetitonOption)
 
   const onCompetitionTypeChange = async (id?: string) => {
     if (!id) {

@@ -9,6 +9,7 @@ export default function Navbar() {
     { href: '/', title: 'Home' },
     { href: '/results/competitor', title: 'Competitors' },
     { href: '/results/competition', title: 'Competition' },
+    { href: '/create', title: 'Create' },
   ]
   const navItems = navLinks.map((link) => (
     <NavbarItem key={link.title} href={link.href} title={link.title} />

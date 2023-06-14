@@ -1,5 +1,6 @@
 import SelectInput from '@/components/SelectInput'
 import ScoreBoard from '@/components/Scoreboard'
+import Modal from '@/components/ui/Modal'
 const yearOptions = [
   { id: 'noYear', value: '', label: 'Select a year' },
   { id: 'year1', value: '2022', label: '2022' },
@@ -18,6 +19,7 @@ export default async function Home() {
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="flex flex-col mt-20 items-center">
         <ScoreBoard data={data} title="Poängligan 2022" />
+        <Modal />
       </div>
     </div>
   )

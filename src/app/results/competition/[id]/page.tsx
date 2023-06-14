@@ -11,7 +11,6 @@ const headings = ['#', 'Name', 'Time', 'Points']
 } */
 
 export default async function CompetitionResultsPage({ params }: { params: { id: string } }) {
-  console.log(params)
   const data = await getResultsByCompetition(params.id)
   const formattedResults = data.map((result) => {
     const { id, competitorName = 'no name', timeMin, timeSec, points } = result

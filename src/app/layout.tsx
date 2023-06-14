@@ -3,7 +3,7 @@ import './globals.css'
 import Providers from '@/app/providers/Providers'
 import { Roboto } from 'next/font/google'
 import Navbar from './navigation/Navbar'
-import CreateButton from './@create/CreateButton'
+import CreateButton from './@modal/CreateButton'
 const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],

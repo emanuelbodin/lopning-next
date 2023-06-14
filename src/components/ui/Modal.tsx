@@ -1,6 +1,6 @@
-export default function Modal() {
+export default function Modal({}) {
   return (
-    <dialog open>
+    <dialog>
       <div>hej</div>
     </dialog>
   )
