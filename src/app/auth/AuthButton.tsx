@@ -2,9 +2,14 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
 import ButtonOutline from '@/components/ui/ButtonOutline'
 
-export default function AuthButton() {
+type Props = {
+  isAuth: boolean
+}
+
+export default function AuthButton({ isAuth }: Props) {
   const { data: session } = useSession()
-  if (session) {
+  console.log(isAuth, session)
+  if (isAuth || session) {
     return (
       <ButtonOutline type="danger" onClick={() => signOut()}>
         Sign out
