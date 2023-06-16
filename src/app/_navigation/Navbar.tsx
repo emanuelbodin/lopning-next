@@ -1,7 +1,7 @@
 import { isUserAdmin, getServerAuthSession } from '@/server/auth'
 import Logo from './Logo'
 import NavbarItem from './NavbarItem'
-import AuthButton from '@/app/auth/AuthButton'
+import AuthButton from '@/app/_auth/AuthButton'
 import MobileNavbar from './MobileNavbar'
 import MobileMenuButton from './MobileMenuButton'
 
