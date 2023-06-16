@@ -8,7 +8,7 @@ import MobileMenuButton from './MobileMenuButton'
 export default async function Navbar() {
   const isAdmin = await isUserAdmin()
   const session = getServerAuthSession()
-  const isAuth = session != undefined || session != null
+  const isAuth = session != undefined && session != null
   const navLinks = [
     { href: '/', title: 'Home' },
     { href: '/results/competitor', title: 'Competitors' },
