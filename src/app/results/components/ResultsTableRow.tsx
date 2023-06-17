@@ -1,20 +1,14 @@
 import classnames from 'classnames'
-
+import { deleteResult } from '../actions'
+import DeleteButton from '../DeleteButton'
 interface ResultTableRowProps {
   data: string[]
   id: string
   placement: number
-  canDelete?: boolean
-  onDelete?: (id: string) => void
+  isAdmin?: boolean
 }
 
-const ResultTableRow = ({
-  data,
-  id,
-  placement,
-  canDelete,
-  onDelete = () => undefined,
-}: ResultTableRowProps) => {
+const ResultTableRow = ({ data, id, placement, isAdmin }: ResultTableRowProps) => {
   return (
     <tr className="border-b bg-gray-800 border-gray-700 hover:bg-gray-600 w-full">
       <td>
@@ -35,13 +29,11 @@ const ResultTableRow = ({
           <div className="text-center px-2 font-semibold">{dataEntity}</div>
         </td>
       ))}
-      {canDelete && (
+      {isAdmin && (
         <td className="py-4 px-6 text-center">
-          <a
-            onClick={() => onDelete(id)}
-            className="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer">
-            Delete
-          </a>
+          <DeleteButton id={id} deleteAction={deleteResult}>
+            Delete Result
+          </DeleteButton>
         </td>
       )}
     </tr>

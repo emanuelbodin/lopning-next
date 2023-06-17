@@ -6,10 +6,10 @@ interface ButtonOutlineProps {
   type?: 'default' | 'danger' | 'success'
 }
 
-const ButtonOutline = ({ type, children, onClick = () => undefined }: ButtonOutlineProps) => {
+const ButtonOutline = ({ type, children, onClick }: ButtonOutlineProps) => {
   return (
     <button
-      onClick={() => onClick()}
+      onClick={onClick}
       className={classnames(
         'relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group text-white',
         {

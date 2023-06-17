@@ -43,6 +43,7 @@ export default function CreateCompetitionForm({ competitionCategories }: Props) 
 
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     setIsLoading(true)
+    console.log(data)
     await fetch('/api/competition', { method: 'POST', body: JSON.stringify(data) })
     setIsLoading(false)
     reset()

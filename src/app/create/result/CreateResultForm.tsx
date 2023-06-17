@@ -67,7 +67,6 @@ export default function CreateResultForm({ competitionCategories, competitors }:
   }, [selectedCompetitionType])
 
   const competitionOptions = useMemo(() => {
-    console.log(competitions)
     if (!competitions.length)
       return [{ id: 'noCompetition', value: '', label: 'Select a competition' }]
     const sortedCompetitions = [...competitions].sort(

@@ -4,11 +4,10 @@ import ResultTableRow from './ResultsTableRow'
 interface TableProps {
   headings: string[]
   data: { id: string; data: string[] }[]
-  canDelete?: boolean
-  onDeleteResult?: (id: string) => void
+  isAdmin?: boolean
 }
 
-const ResultsTable = ({ headings, data, canDelete, onDeleteResult }: TableProps) => {
+const ResultsTable = ({ headings, data, isAdmin }: TableProps) => {
   return (
     <table className="w-full text-sm text-left text-gray-400">
       <TableHeading headings={headings} />
@@ -24,8 +23,7 @@ const ResultsTable = ({ headings, data, canDelete, onDeleteResult }: TableProps)
             id={item.id}
             placement={index + 1}
             data={item.data}
-            canDelete={canDelete}
-            onDelete={onDeleteResult}
+            isAdmin={isAdmin}
           />
         ))}
       </tbody>

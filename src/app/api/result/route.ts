@@ -4,10 +4,10 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   const isAdmin = await isUserAdmin()
-  if (!isAdmin) return new NextResponse('Unauthenticated', { status: 404 })
-  const res = await request.json()
+  if (!isAdmin) return new NextResponse('Unauthenticated', { status: 401 })
+  const data = await request.json()
 
-  const { points, timeMin, timeSec, competitionId, competitorId } = res as {
+  const { points, timeMin, timeSec, competitionId, competitorId } = data as {
     points: number
     timeMin: number
     timeSec: number

@@ -9,9 +9,11 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const isAdmin = await isUserAdmin()
-  if (!isAdmin) return new NextResponse('Unauthenticated', { status: 404 })
-  const res = await request.json()
-  const { categoryId, date } = res.body as { categoryId: string; date: string }
-  const newCompetition = await prisma.competition.create({ data: { categoryId, date } })
+  if (!isAdmin) return new NextResponse('Unauthenticated', { status: 401 })
+  const data = await request.json()
+  const { categoryId, date } = data as { categoryId: string; date: string }
+  const newCompetition = await prisma.competition.create({
+    data: { categoryId, date: new Date(date) },
+  })
   return NextResponse.json({ data: newCompetition })
 }

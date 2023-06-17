@@ -8,7 +8,6 @@ type Props = {
 
 export default function AuthButton({ isAuth }: Props) {
   const { data: session } = useSession()
-  console.log(isAuth, session)
   if (isAuth || session) {
     return (
       <ButtonOutline type="danger" onClick={() => signOut()}>

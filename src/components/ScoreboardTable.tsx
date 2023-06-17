@@ -2,12 +2,12 @@ import Card from '@/components/ui/Card'
 import TableHeading from '@/components/TableHeading'
 import ScoreBoardRow from './ScoreboardRow'
 import { ScoreboardRow as TScoreboardRow } from '@/types/results'
-interface ScoreBoardProps {
+interface Props {
   title: string
   data: TScoreboardRow[]
 }
 
-const ScoreBoard = ({ title, data }: ScoreBoardProps) => {
+export default function ScoreboardTable({ title, data }: Props) {
   const headings = ['#', 'name', '# of competitions', 'points']
   return (
     <Card title={title}>
@@ -27,5 +27,3 @@ const ScoreBoard = ({ title, data }: ScoreBoardProps) => {
     </Card>
   )
 }
-
-export default ScoreBoard
