@@ -29,7 +29,7 @@ export default function Scoreboard({ availableYears, initialData }: Props) {
     }
     const res = await fetch(`/api/scoreboard/${year}`)
     const scoreboardData = await res.json()
-    setData(scoreboardData)
+    setData(scoreboardData.data)
   }
 
   const title = `Scoreboard ${selectedYear}`
