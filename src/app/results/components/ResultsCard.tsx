@@ -4,19 +4,13 @@ import ResultsTable from './ResultsTable'
 interface ResultCardProps {
   title: string
   data: { id: string; data: string[] }[]
-  canDelete?: boolean
-  onDeleteResult?: (id: string) => void
+  isAdmin?: boolean
   headings: string[]
 }
-const ResultsCard = ({ title, data, canDelete, onDeleteResult, headings }: ResultCardProps) => {
+const ResultsCard = ({ title, data, isAdmin, headings }: ResultCardProps) => {
   return (
     <Card title={title}>
-      <ResultsTable
-        headings={headings}
-        data={data}
-        canDelete={canDelete}
-        onDeleteResult={onDeleteResult}
-      />
+      <ResultsTable headings={headings} data={data} isAdmin={isAdmin} />
     </Card>
   )
 }

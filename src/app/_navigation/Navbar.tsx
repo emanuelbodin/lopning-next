@@ -1,15 +1,20 @@
+import { isUserAdmin, getServerAuthSession } from '@/server/auth'
 import Logo from './Logo'
 import NavbarItem from './NavbarItem'
-import AuthButton from '@/app/auth/AuthButton'
+import AuthButton from '@/app/_auth/AuthButton'
 import MobileNavbar from './MobileNavbar'
 import MobileMenuButton from './MobileMenuButton'
 
-export default function Navbar() {
+export default async function Navbar() {
+  const isAdmin = await isUserAdmin()
+  const session = await getServerAuthSession()
+  const isAuth = !!session
   const navLinks = [
     { href: '/', title: 'Home' },
     { href: '/results/competitor', title: 'Competitors' },
     { href: '/results/competition', title: 'Competition' },
   ]
+  if (isAdmin) navLinks.push({ href: '/create', title: 'Create' })
   const navItems = navLinks.map((link) => (
     <NavbarItem key={link.title} href={link.href} title={link.title} />
   ))
@@ -22,7 +27,7 @@ export default function Navbar() {
           {navItems}
         </ul>
         <div className="hidden lg:block">
-          <AuthButton />
+          <AuthButton isAuth={isAuth} />
         </div>
         <div className="lg:hidden">
           <MobileMenuButton />

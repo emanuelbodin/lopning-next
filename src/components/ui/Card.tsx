@@ -1,6 +1,6 @@
 interface CardProps {
-  children: React.ReactElement;
-  title: string;
+  children: React.ReactElement
+  title: string
 }
 
 const Card = ({ children, title }: CardProps) => {
@@ -11,7 +11,7 @@ const Card = ({ children, title }: CardProps) => {
       </div>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

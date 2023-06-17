@@ -1,6 +1,6 @@
 'use client'
 import classNames from 'classnames'
-import { useUiContext } from '../providers/UiProvider'
+import { useUiContext } from '../_providers/UiProvider'
 
 type MobileNavbarProps = {
   children: React.ReactNode
