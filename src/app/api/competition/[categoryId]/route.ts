@@ -6,10 +6,10 @@ export async function GET(
   {
     params,
   }: {
-    params: { id: string }
+    params: { categoryId: string }
   }
 ) {
-  const { id } = params
-  const competitions = await prisma.competition.findMany({ where: { category: { id } } })
+  const { categoryId } = params
+  const competitions = await prisma.competition.findMany({ where: { categoryId } })
   return NextResponse.json({ data: competitions })
 }

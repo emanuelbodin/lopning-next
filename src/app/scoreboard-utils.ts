@@ -30,7 +30,7 @@ export const getScoreboard = async (year?: number) => {
         gte: new Date(year, 0, 1),
         lt: new Date(year + 1, 0, 1),
       },
-      category: { name: 'Söndagstävling' },
+      category: { name: '5k' },
     },
   })
   const competitionIds = competitions.map((competition) => competition.id)
