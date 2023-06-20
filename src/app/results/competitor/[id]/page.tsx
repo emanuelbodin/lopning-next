@@ -33,7 +33,7 @@ const CompetitorResultsPage = async ({ params: { id } }: Props) => {
       <form>
         {isAdmin && (
           <DeleteButton deleteAction={deleteCompetitor} id={id}>
-            Delete Competition
+            Delete Competitor
           </DeleteButton>
         )}
       </form>

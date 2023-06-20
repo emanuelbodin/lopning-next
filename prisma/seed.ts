@@ -11,6 +11,9 @@ async function main() {
   const competition1 = await prisma.competition.create({
     data: { date: new Date(), categoryId: category1.id },
   })
+  const competition2 = await prisma.competition.create({
+    data: { date: new Date(), categoryId: category1.id },
+  })
   await prisma.result.create({
     data: {
       competitorId: competitor1.id,

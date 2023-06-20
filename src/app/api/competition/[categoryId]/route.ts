@@ -11,5 +11,9 @@ export async function GET(
 ) {
   const { categoryId } = params
   const competitions = await prisma.competition.findMany({ where: { categoryId } })
-  return NextResponse.json({ data: competitions })
+  const sortedCompetitions = competitions.sort(
+    (a, b) => a.date.getMilliseconds() - b.date.getMilliseconds()
+  )
+
+  return NextResponse.json({ data: sortedCompetitions })
 }
