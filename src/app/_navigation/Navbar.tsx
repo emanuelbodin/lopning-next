@@ -12,7 +12,7 @@ export default async function Navbar() {
   const navLinks = [
     { href: '/', title: 'Home' },
     { href: '/results/competitor', title: 'Competitors' },
-    { href: '/results/competition', title: 'Competition' },
+    { href: '/results/competition', title: 'Competitions' },
   ]
   if (isAdmin) navLinks.push({ href: '/create', title: 'Create' })
   const navItems = navLinks.map((link) => (

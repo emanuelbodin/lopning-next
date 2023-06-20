@@ -31,7 +31,7 @@ export default function CompetitonSelector({ categories }: CompetitonSelectorPro
     const options = competitions.data.map((competition) => ({
       id: competition.id,
       value: competition.id,
-      label: competition.date.toString(),
+      label: competition.date.toString().split('T')[0],
     }))
     setCompetitionOptions([...defaultCompetitonOption, ...options])
   }

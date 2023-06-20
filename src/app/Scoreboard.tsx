@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function Scoreboard({ availableYears, initialData }: Props) {
-  const [selectedYear, setSelectedYear] = useState('')
+  const [selectedYear, setSelectedYear] = useState(availableYears[availableYears.length - 1])
   const [data, setData] = useState(initialData)
   const yearOptions = [
     { id: 'noYear', value: '', label: 'Select a year' },
