@@ -27,7 +27,6 @@ export default function RootLayout({
       <body className={roboto.className}>
         <Providers>
           <div className="bg-stone-900 text-white w-screen min-h-screen flex flex-col">
-            {/* @ts-expect-error Server Component */}
             <Navbar />
             <main className="w-full mb-10">
               {children}
