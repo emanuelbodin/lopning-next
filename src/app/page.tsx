@@ -1,8 +1,8 @@
 import Modal from '@/components/ui/Modal'
 
-import { getScoreboard } from './scoreboard-utils'
+import { getScoreboard } from './actions'
 import Scoreboard from './Scoreboard'
-import { getYears } from './scoreboard-utils'
+import { getYears } from './actions'
 
 export const revalidate = 3600
 

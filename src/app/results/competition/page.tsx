@@ -1,3 +1,3 @@
 export default function CompetitonResultsPage() {
-  return <></>
+  return <>No competiton selected</>
 }

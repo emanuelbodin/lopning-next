@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import './globals.css'
-import Providers from '@/app/_providers/Providers'
+import Providers from '@/components/providers/providers'
 import { Roboto } from 'next/font/google'
-import Navbar from './_navigation/Navbar'
-import CreateButton from './@modal/CreateButton'
+import Navbar from '../components/navigation/Navbar'
+
 const roboto = Roboto({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
@@ -13,6 +13,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Run',
   description: 'Run',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -31,7 +34,6 @@ export default function RootLayout({
             <main className="w-full mb-10">
               {children}
               {create}
-              {/* <CreateButton /> */}
             </main>
           </div>
         </Providers>

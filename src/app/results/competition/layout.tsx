@@ -1,5 +1,5 @@
 import CompetitonSelector from './CompetitonSelector'
-import { getCompetitionCategories } from '../result-utils'
+import { getCompetitionCategories } from '../actions'
 
 export default async function CompetitionPageLayout({ children }: { children: React.ReactNode }) {
   const categories = await getCompetitionCategories()

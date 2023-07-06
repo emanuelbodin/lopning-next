@@ -1,5 +1,5 @@
 import ResultsCard from '@/app/results/components/ResultsCard'
-import { getResultsByCompetition } from '@/app/results/result-utils'
+import { getResultsByCompetition } from '@/app/results/actions'
 import { isUserAdmin } from '@/server/auth'
 import { deleteCompetition } from '../../actions'
 import DeleteButton from '../../DeleteButton'

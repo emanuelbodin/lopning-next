@@ -1,3 +1,4 @@
+'use server'
 import { prisma } from '@/server/db'
 import { ScoreboardRow } from '@/types/results'
 

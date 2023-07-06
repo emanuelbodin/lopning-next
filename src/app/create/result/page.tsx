@@ -1,5 +1,5 @@
 import CreateResultForm from './CreateResultForm'
-import { getCompetitionCategories, getCompetitors } from '@/app/results/result-utils'
+import { getCompetitionCategories, getCompetitors } from '@/app/results/actions'
 
 export default async function CreateModal() {
   const competitionCategoriesPromise = getCompetitionCategories()

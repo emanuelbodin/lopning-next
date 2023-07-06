@@ -1,5 +1,5 @@
 'use client'
-import { useUiContext } from '@/app/_providers/UiProvider'
+import { useUiContext } from '@/components/providers/ui-provider'
 
 export default function MobileMenuButton() {
   const { toggleNavbar } = useUiContext()
