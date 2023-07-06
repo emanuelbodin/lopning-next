@@ -28,8 +28,7 @@ pnpm dev
 
 - [Next js](https://nextjs.org/docs) - Fullstack React framework.
 - [Prisma](https://www.prisma.io/nextjs) - Type safe Database ORM.
+- [Postgres] - SQL db
+- [Authjs] (https://authjs.dev/) - Magic link authentication.
+- [sendgrid] (https://sendgrid.com/) - Email service.
 - [tailwind css](https://tailwindcss.com/) - CSS library for styling.
-
-## OBS
-
-A custom Dockerfile in `mongodb-rs/Dockerfile` is used since Prisma requires the MongoDB server to be run as a replica set in order to perform transactions. A replica set is a group of MongoDB servers that maintain the same data set, providing redundancy and high availability.
