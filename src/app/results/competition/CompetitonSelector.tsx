@@ -41,7 +41,7 @@ export default function CompetitonSelector({ categories }: CompetitonSelectorPro
     router.push(`/results/competition/${competitorId}`)
   }
   return (
-    <div className="flex gap-4 justify-center">
+    <div className="flex-col md:flex-row gap-4 justify-center">
       <SelectInput onChange={onCompetitionTypeChange} label="Type" options={categoryOptions} />
       <SelectInput onChange={onCompetitonSelected} label="Date" options={competitionOptions} />
     </div>

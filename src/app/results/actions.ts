@@ -63,6 +63,7 @@ export const getCompetitionCategories = async () => {
 
 export const getCompetitors = async () => {
   const competitors = await prisma.competitor.findMany()
+  competitors.sort((a, b) => a.name.localeCompare(b.name))
   return competitors
 }
 
